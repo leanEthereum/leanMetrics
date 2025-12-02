@@ -35,10 +35,7 @@
             "type": "row"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -99,10 +96,7 @@
             "type": "stat"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -163,10 +157,7 @@
             "type": "stat"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -252,10 +243,7 @@
             "type": "text"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "description": "Head to finalized distance (slots)",
             "fieldConfig": {
                 "defaults": {
@@ -318,10 +306,7 @@
             "type": "stat"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "description": "Head to justified distance (slots)",
             "fieldConfig": {
                 "defaults": {
@@ -384,10 +369,7 @@
             "type": "stat"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "description": "Justified but unfinalized (slots)",
             "fieldConfig": {
                 "defaults": {
@@ -450,10 +432,7 @@
             "type": "stat"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -527,10 +506,7 @@
             "type": "row"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "description": "Time taken to process block in fork-choice",
             "fieldConfig": {
                 "defaults": {
@@ -661,10 +637,7 @@
             "type": "row"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -756,10 +729,7 @@
             "type": "timeseries"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -849,10 +819,7 @@
             "type": "timeseries"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -943,10 +910,7 @@
             "type": "timeseries"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "description": "Total number of attestations processed in state transition function",
             "fieldConfig": {
                 "defaults": {
@@ -1039,10 +1003,7 @@
             "type": "timeseries"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "description": "Time taken to process attestations in state transition function",
             "fieldConfig": {
                 "defaults": {
@@ -1147,10 +1108,7 @@
             "type": "row"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "description": "Time taken to process state transition function",
             "fieldConfig": {
                 "defaults": {
@@ -1243,10 +1201,7 @@
             "type": "timeseries"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "description": "Time taken to process block in state transition function",
             "fieldConfig": {
                 "defaults": {
@@ -1339,10 +1294,7 @@
             "type": "timeseries"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "description": "Total number of processed slots in state transition function",
             "fieldConfig": {
                 "defaults": {
@@ -1434,10 +1386,7 @@
             "type": "timeseries"
         },
         {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "feyrb1q11ge0wa"
-            },
+            "datasource": "lean-prometheus",
             "description": "Time taken to process slots in state transition function",
             "fieldConfig": {
                 "defaults": {
