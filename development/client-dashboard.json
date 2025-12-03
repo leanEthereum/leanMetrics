@@ -527,7 +527,10 @@
             "type": "row"
         },
         {
-            "datasource": "lean-prometheus",
+            "datasource": {
+                "type": "prometheus",
+                "uid": "feyrb1q11ge0wa"
+            },
             "description": "Time taken to sign a PQ signature",
             "fieldConfig": {
                 "defaults": {
@@ -621,7 +624,10 @@
             "type": "timeseries"
         },
         {
-            "datasource": "lean-prometheus",
+            "datasource": {
+                "type": "prometheus",
+                "uid": "feyrb1q11ge0wa"
+            },
             "description": "Time taken to verify a PQ signature",
             "fieldConfig": {
                 "defaults": {
