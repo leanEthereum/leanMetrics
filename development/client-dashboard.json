@@ -613,7 +613,7 @@
             "targets": [
                 {
                     "editorMode": "code",
-                    "expr": "histogram_quantile(0.99, (rate(lean_pq_signature_attestation_signing_time_seconds{job=~\"$job\"}[$__rate_interval])))\n",
+                    "expr": "histogram_quantile(0.99, (rate(lean_pq_signature_attestation_signing_time_seconds_bucket{job=~\"$job\"}[$__rate_interval])))\n",
                         "interval": "",
                         "legendFormat": "{{job}}",
                         "range": true,
