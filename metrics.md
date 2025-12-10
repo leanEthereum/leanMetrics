@@ -4,6 +4,7 @@
 - [Fork-Choice Metrics](#fork-choice-metrics)
 - [State Transition Metrics](#state-transition-metrics)
 - [Validator Metrics](#validator-metrics)
+- [Network Metrics](#network-metrics)
 
 ## PQ Signature Metrics
 
@@ -40,3 +41,11 @@
 | Name   | Type  | Usage | Sample collection event | Labels | Qlean    | Ream     | Zeam     |
 |--------|-------|-------|-------------------------|--------|----------|----------|----------|
 |`lean_validators_count`| Gauge | Number of connected validators | On scrape |  | ✅ | □ | □ |
+
+## Network Metrics
+
+| Name   | Type  | Usage | Sample collection event | Labels | Lantern  | Qlean    | Ream     | Zeam     |
+|--------|-------|-------|-------------------------|--------|----------|----------|----------|----------|
+|`lean_connected_peers`| Gauge | Number of connected peers | On scrape | client=lantern,qlean,ream,zeam | □ | □ | □ | □ |
+|`lean_peer_connection_events_total`| Counter | Total number of peer connection events | On peer connection | direction=inbound,outbound<br>result=success,timeout,error | □ | □ | □ | □ |
+|`lean_peer_disconnection_events_total`| Counter | Total number of peer disconnection events | On peer disconnection | direction=inbound,outbound<br>reason=timeout,remote_close,local_close,error | □ | □ | □ | □ |
