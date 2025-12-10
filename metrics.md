@@ -18,8 +18,8 @@
 |--------|-------|-------|-------------------------|--------|---------|----------|----------|----------|----------|
 | `lean_head_slot` | Gauge | Latest slot of the lean chain | On get fork choice head | | | ✅  | ✅ | ✅ | ✅ |
 |`lean_fork_choice_block_processing_time_seconds`| Histogram | Time taken to process block | On fork choice process block | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | ✅ | ✅ | ✅ | □ |
-|`lean_attestations_valid_total`| Counter | Total number of valid attestations | On validate attestation | | | ✅ | ✅ | ✅ | □ |
-|`lean_attestations_invalid_total`| Counter | Total number of invalid attestations | On validate attestation | | | ✅ | ✅ | ✅ | □ |
+|`lean_attestations_valid_total`| Counter | Total number of valid attestations | On validate attestation | source=block,gossip | | ✅ | ✅ | ✅ | □ |
+|`lean_attestations_invalid_total`| Counter | Total number of invalid attestations | On validate attestation | source=block,gossip | | ✅ | ✅ | ✅ | □ |
 |`lean_attestation_validation_time_seconds`| Histogram | Time taken to validate attestation | On validate attestation | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | ✅ | ✅ | ✅ | □ |
 
 ## State Transition Metrics
