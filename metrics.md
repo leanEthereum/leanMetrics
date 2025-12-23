@@ -1,9 +1,19 @@
 # Lean Metrics
 
+- [Node Info Metrics](#node-info-metrics)
 - [PQ Signature Metrics](#pq-signature-metrics)
+- [Sync Metrics](#sync-metrics)
 - [Fork-Choice Metrics](#fork-choice-metrics)
 - [State Transition Metrics](#state-transition-metrics)
 - [Validator Metrics](#validator-metrics)
+
+## Node Info Metrics
+
+| Name   | Type  | Usage | Sample collection event | Labels | Lantern  | Qlean    | Ream     | Zeam     |
+|--------|-------|-------|-------------------------|--------|----------|----------|----------|----------|
+| `lean_node_info` | Gauge | Node information (always 1) | On node start | name, version | □ | □ | □ | □ |
+| `lean_node_start_time_seconds` | Gauge | Start timestamp | On node start | | □ | □ | □ | □ |
+
 
 ## PQ Signature Metrics
 
@@ -11,6 +21,13 @@
 |--------|-------|-------|-------------------------|--------|---------|----------|----------|----------|----------|
 | `lean_pq_signature_attestation_signing_time_seconds` | Histogram | Time taken to sign an attestation | On each attestation signing | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | □ | □ | ✅ | □ |
 | `lean_pq_signature_attestation_verification_time_seconds` | Histogram | Time taken to verify an attestation signature | On each `signature.verify()` on an attestation | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | □ | □ | ✅ | □ |
+
+## Sync Metrics
+
+| Name   | Type  | Usage | Sample collection event | Labels | Lantern  | Qlean    | Ream     | Zeam     |
+|--------|-------|-------|-------------------------|--------|----------|----------|----------|----------|
+| `lean_node_sync_status` | Gauge | Current sync status (always 1) | On sync status change | status=not_started,syncing,synced,stalled | □ | □ | □ | □ |
+
 
 ## Fork-Choice Metrics
 
@@ -21,6 +38,8 @@
 |`lean_attestations_valid_total`| Counter | Total number of valid attestations | On validate attestation | source=block,gossip | | ✅ | ✅ | ✅ | □ |
 |`lean_attestations_invalid_total`| Counter | Total number of invalid attestations | On validate attestation | source=block,gossip | | ✅ | ✅ | ✅ | □ |
 |`lean_attestation_validation_time_seconds`| Histogram | Time taken to validate attestation | On validate attestation | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | ✅ | ✅ | ✅ | □ |
+| `lean_fork_choice_reorgs_total` | Counter | Total number of fork choice reorgs | On fork choice reorg | | | □ | □ | □ | □ |
+| `lean_fork_choice_reorg_depth` | Histogram | Depth of fork choice reorgs (in blocks) | On fork choice reorg | | 1, 2, 3, 5, 7, 10, 20, 30, 50, 100 | □ | □ | □ | □ |
 
 ## State Transition Metrics
 
@@ -28,6 +47,7 @@
 |--------|-------|-------|-------------------------|--------|---------|----------|----------|----------|----------|
 | `lean_latest_justified_slot` | Gauge | Latest justified slot | On state transition | | | ✅ | ✅ | ✅ | ✅ |
 | `lean_latest_finalized_slot` | Gauge | Latest finalized slot | On state transition | | | ✅ | ✅ | ✅ | ✅ |
+| `lean_finalizations_total` | Counter | Total number of finalization attempts | On finalization attempt | result=success,error | | □ | □ | □ | □ |
 |`lean_state_transition_time_seconds`| Histogram | Time to process state transition | On state transition | | 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3, 4 | ✅ | ✅ | ✅ | ✅ |
 |`lean_state_transition_slots_processed_total`| Counter | Total number of processed slots | On state transition process slots | | | ✅ | ✅ | ✅ | ✅ |
 |`lean_state_transition_slots_processing_time_seconds`| Histogram | Time taken to process slots | On state transition process slots | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | ✅ | ✅ | ✅ | ✅ |
