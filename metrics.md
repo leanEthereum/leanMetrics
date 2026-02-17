@@ -42,6 +42,13 @@
 |`lean_attestation_validation_time_seconds`| Histogram | Time taken to validate attestation | On validate attestation | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | ✅ | ✅ | ✅ | □ |
 | `lean_fork_choice_reorgs_total` | Counter | Total number of fork choice reorgs | On fork choice reorg | | | □ | □ | □ | □ |
 | `lean_fork_choice_reorg_depth` | Histogram | Depth of fork choice reorgs (in blocks) | On fork choice reorg | | 1, 2, 3, 5, 7, 10, 20, 30, 50, 100 | □ | □ | □ | □ |
+| `lean_gossip_signatures_count` | Gauge | Current number of gossip signatures in fork-choice store | On gossip signatures update | | | □ | □ | □ | □ |
+| `lean_latest_new_aggregated_payloads_count` | Gauge | Current number of new aggregated payloads | On new aggregated payloads update | | | □ | □ | □ | □ |
+| `lean_latest_known_aggregated_payloads_count` | Gauge | Current number of known aggregated payloads | On known aggregated payloads update | | | □ | □ | □ | □ |
+| `lean_committee_signatures_aggregation_time_seconds` | Histogram | Time taken to aggregate committee signatures | On committee signatures aggregation | | 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 0.75, 1 | □ | □ | □ | □ |
+|`lean_committee_aggregated_attestations_total`| Counter | total number of aggregated attestations produced by committee aggregation | On committee signatures aggregation | | | □ | □ |  □ | □ |
+
+
 
 ## State Transition Metrics
 
@@ -62,6 +69,7 @@
 | Name   | Type  | Usage | Sample collection event | Labels | Lantern  | Qlean    | Ream     | Zeam     |
 |--------|-------|-------|-------------------------|--------|----------|----------|----------|----------|
 |`lean_validators_count`| Gauge | Number of validators managed by a node | On scrape |  | ✅ | ✅ | ✅ | ✅ |
+|`lean_is_aggregator`| Gauge | Validator's `is_aggregator` status. True=1, False=0 | On change `is_aggregator` |  | □ | □ | □ | □ |
 
 ## Network Metrics
 
@@ -70,3 +78,5 @@
 |`lean_connected_peers`| Gauge | Number of connected peers | On scrape | client=lantern,qlean,ream,zeam | □ | 📝 | ✅ | □ |
 |`lean_peer_connection_events_total`| Counter | Total number of peer connection events | On peer connection | direction=inbound,outbound<br>result=success,timeout,error | □ | □ | 📝 | □ |
 |`lean_peer_disconnection_events_total`| Counter | Total number of peer disconnection events | On peer disconnection | direction=inbound,outbound<br>reason=timeout,remote_close,local_close,error | □ | □ | 📝 | □ |
+|`lean_committee_attestation_subnet`| Gauge | Current commitee's attestation subnet | On node start | | □ | □ | □ | □ |
+|`lean_committee_attestation_subnets_count`| Gauge | Number of commitee's attestation subnets, `ATTESTATION_COMMITTEE_COUNT` | On node start | | □ | □ | □ | □ |
