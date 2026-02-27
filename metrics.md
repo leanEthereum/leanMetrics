@@ -20,17 +20,15 @@
 
 | Name   | Type  | Usage | Sample collection event | Labels | Buckets | EthLambda | Grandine | Lantern  | Lighthouse | Qlean    | Ream     | Zeam     |
 |--------|-------|-------|-------------------------|--------|---------|-----------|----------|----------|------------|----------|----------|----------|
-| `lean_pq_sig_individual_signatures_total` | Counter | Total number of individual attestation signatures | On gossip attestation | | | □ | □ | □ | □ | □ | □ | □ |
-| `lean_pq_sig_individual_signatures_valid_total`| Counter | Total number of valid individual attestation signatures | On gossip attestation | | | □ | □ | □ | □ | □ | □ | □ |
-| `lean_pq_sig_individual_signatures_invalid_total`| Counter | Total number of invalid individual attestation signatures | On gossip attestation | | | □ | □ | □ | □ | □ | □ | □ |
+| `lean_pq_sig_attestation_signatures_valid_total`| Counter | Total number of valid individual attestation signatures | On gossip attestation | | | □ | □ | □ | □ | □ | □ | □ |
+| `lean_pq_sig_attestation_signatures_invalid_total`| Counter | Total number of invalid individual attestation signatures | On gossip attestation | | | □ | □ | □ | □ | □ | □ | □ |
 | `lean_pq_sig_attestation_signing_time_seconds` | Histogram | Time taken to sign an attestation | On each attestation signing | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | □ | □ | □ | □ | □ | □ | □ |
 | `lean_pq_sig_attestation_verification_time_seconds` | Histogram | Time taken to verify an attestation signature | On each attestation signature verification | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | □ | □ | □ | □ | □ | □ | □ |
-| `lean_pq_sig_aggregated_signatures_total` | Counter | Total number of aggregated signatures | On aggregated signature production | |  | □ | □ | □ | □ | □ | □ | □ |
 | `lean_pq_sig_aggregated_signatures_valid_total`| Counter | Total number of valid aggregated signatures | On validate aggregated signature | | | □ | □ | □ | □ | □ | □ | □ |
 | `lean_pq_sig_aggregated_signatures_invalid_total`| Counter | Total number of invalid aggregated signatures | On validate aggregated signature | | | □ | □ | □ | □ | □ | □ | □ |
 | `lean_pq_sig_attestations_in_aggregated_signatures_total` | Counter | Total number of attestations included into aggregated signatures | On aggregated signature production | | | □ | □ | □ | □ | □ | □ | □ |
-| `lean_pq_sig_attestation_signatures_building_time_seconds` | Histogram | Time taken to build an aggregated attestation signature | On aggregated signature production | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | □ | □ | □ | □ | □ | □ | □ |
-| `lean_pq_sig_aggregated_signatures_verification_time_seconds` | Histogram | Time taken to verify an aggregated attestation signature | On validate aggregated signature | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | □ | □ | □ | □ | □ | □ | □ |
+| `lean_pq_sig_aggregated_signatures_building_time_seconds` | Histogram | Time taken to build an aggregated attestation signature | On aggregated signature production | | 0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 4 | □ | □ | □ | □ | □ | □ | □ |
+| `lean_pq_sig_aggregated_signatures_verification_time_seconds` | Histogram | Time taken to verify an aggregated attestation signature | On validate aggregated signature | | 0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 4 | □ | □ | □ | □ | □ | □ | □ |
 
 ## Fork-Choice Metrics
 
@@ -39,7 +37,7 @@
 | `lean_head_slot` | Gauge | Latest slot of the lean chain | On get fork choice head | | | □ | □ | ✅  | □ | ✅ | ✅ | ✅ |
 | `lean_current_slot` | Gauge | Current slot of the lean chain | On scrape | | | □ | □ | □ | □ | □ | □ | □ |
 | `lean_safe_target_slot` | Gauge | Safe target slot | On safe target update | | | □ | □ | □ | □ | □ | □ | □ |
-|`lean_fork_choice_block_processing_time_seconds`| Histogram | Time taken to process block | On fork choice process block | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | □ | □ | ✅ | □ | ✅ | ✅ | □ |
+|`lean_fork_choice_block_processing_time_seconds`| Histogram | Time taken to process block | On fork choice process block | | 0.005, 0.01, 0.025, 0.05, 0.1, 1, 1.25, 1.5, 2, 4 | □ | □ | ✅ | □ | ✅ | ✅ | □ |
 |`lean_attestations_valid_total`| Counter | Total number of valid attestations | On validate attestation | source=block,gossip | | □ | □ | ✅ | □ | ✅ | ✅ | □ |
 |`lean_attestations_invalid_total`| Counter | Total number of invalid attestations | On validate attestation | source=block,gossip | | □ | □ | ✅ | □ | ✅ | ✅ | □ |
 |`lean_attestation_validation_time_seconds`| Histogram | Time taken to validate attestation | On validate attestation | | 0.005, 0.01, 0.025, 0.05, 0.1, 1 | □ | □ | ✅ | □ | ✅ | ✅ | □ |
