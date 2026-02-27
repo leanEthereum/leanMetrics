@@ -76,7 +76,7 @@
 
 | Name   | Type  | Usage | Sample collection event | Labels | EthLambda | Grandine | Lantern  | Lighthouse | Qlean    | Ream     | Zeam     |
 |--------|-------|-------|-------------------------|--------|-----------|----------|----------|------------|----------|----------|----------|
-|`lean_connected_peers`| Gauge | Number of connected peers | On scrape | client=lantern,qlean,ream,zeam | □ | □ | □ | □ | 📝 | ✅ | □ |
+|`lean_connected_peers`| Gauge | Number of connected peers | On scrape | client=ethlambda,grandine,lantern,lighthouse,qlean,ream,zeam | □ | □ | □ | □ | 📝 | ✅ | □ |
 |`lean_peer_connection_events_total`| Counter | Total number of peer connection events | On peer connection | direction=inbound,outbound<br>result=success,timeout,error | □ | □ | □ | □ | □ | 📝 | □ |
 |`lean_peer_disconnection_events_total`| Counter | Total number of peer disconnection events | On peer disconnection | direction=inbound,outbound<br>reason=timeout,remote_close,local_close,error | □ | □ | □ | □ | □ | 📝 | □ |
 |`lean_committee_attestation_subnet`| Gauge | Current commitee's attestation subnet | On node start | | □ | □ | □ | □ | □ | □ | □ |
