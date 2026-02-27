@@ -48,7 +48,6 @@
 | `lean_gossip_signatures` | Gauge | Number of gossip signatures in fork-choice store | On gossip signatures update | | | □ | □ | □ | □ | □ | □ | □ |
 | `lean_latest_new_aggregated_payloads` | Gauge | Number of new aggregated payload items | On `latest_new_aggregated_payloads` update | | | □ | □ | □ | □ | □ | □ | □ |
 | `lean_latest_known_aggregated_payloads` | Gauge | Number of known aggregated payload items | On `latest_known_aggregated_payloads` update | | | □ | □ | □ | □ | □ | □ | □ |
-|`lean_committee_aggregated_attestations_total`| Counter | Total number of aggregated attestations produced by committee aggregation | On committee signatures aggregation | | | □ | □ | □ | □ | □ | □ | □ |
 | `lean_committee_signatures_aggregation_time_seconds` | Histogram | Time taken to aggregate committee signatures | On committee signatures aggregation | | 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 0.75, 1 | □ | □ | □ | □ | □ | □ | □ |
 
 ## State Transition Metrics
