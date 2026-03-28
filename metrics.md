@@ -12,8 +12,8 @@
 
 | Name   | Type  | Usage | Sample collection event | Labels | EthLambda | Grandine | Lantern  | Lighthouse | Qlean    | Ream     | Zeam     |
 |--------|-------|-------|-------------------------|--------|-----------|----------|----------|------------|----------|----------|----------|
-| `lean_node_info` | Gauge | Node information (always 1) | On node start | name, version | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ |
-| `lean_node_start_time_seconds` | Gauge | Start timestamp | On node start | | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ |
+| `lean_node_info` | Gauge | Node information (always 1) | On node start | name, version | ✅ | ✅ | ✅ | □ | ✅ | ✅ | ✅ |
+| `lean_node_start_time_seconds` | Gauge | Start timestamp | On node start | | ✅ | ✅ | ✅ | □ | ✅ | ✅ | ✅ |
 
 
 ## PQ Signature Metrics
