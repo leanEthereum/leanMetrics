@@ -2,7 +2,7 @@
 
 - [Node Info Metrics](#node-info-metrics)
 - [PQ Signature Metrics](#pq-signature-metrics)
-- [Sync Metrics](#sync-metrics)
+- [Block Production Metrics](#block-production-metrics)
 - [Fork-Choice Metrics](#fork-choice-metrics)
 - [State Transition Metrics](#state-transition-metrics)
 - [Validator Metrics](#validator-metrics)
@@ -32,6 +32,16 @@
 | `lean_pq_sig_aggregated_signatures_building_time_seconds` | Histogram | Time taken to build an aggregated attestation signature | On aggregated signature production | | 0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 4 | ✅ | □ | 📝 | □ | ✅ | ✅ | ✅ | ✅ | 📝 |
 | `lean_pq_sig_aggregated_signatures_verification_time_seconds` | Histogram | Time taken to verify an aggregated attestation signature | On aggregated signature verification | | 0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 4 | ✅ | □ | 📝 | □ | ✅ | ✅ | ✅ | ✅ | 📝 |
 
+## Block Production Metrics
+
+| Name   | Type  | Usage | Sample collection event | Labels | Buckets | EthLambda | Grandine | Lantern  | Lighthouse | Nlean | Peam | Qlean    | Ream     | Zeam     |
+|--------|-------|-------|-------------------------|--------|---------|-----------|----------|----------|------------|-------|------|----------|----------|----------|
+| `lean_block_aggregated_payloads` | Histogram | Number of `aggregated_payloads` in a block | On block production | | 1, 2, 4, 8, 16, 32, 64, 128 | □ | □ | □ | □ | □ | □ | □ | □ | □ |
+| `lean_block_building_payload_aggregation_time_seconds` | Histogram | Time taken to build `aggregated_payloads` during block building | On block production | | 0.1, 0.25, 0.5, 0.75, 1, 2, 3, 4 | □ | □ | □ | □ | □ | □ | □ | □ | □ |
+| `lean_block_building_time_seconds` | Histogram | Time taken to build a block | On block production | | 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 0.75, 1 | □ | □ | □ | □ | □ | □ | □ | □ | □ |
+| `lean_block_building_success_total` | Counter | Successful block builds | On block production | | | □ | □ | □ | □ | □ | □ | □ | □ | □ |
+| `lean_block_building_failures_total` | Counter | Failed block builds (exception in build_block) | On block production failure | | | □ | □ | □ | □ | □ | □ | □ | □ | □ |
+
 ## Fork-Choice Metrics
 
 | Name   | Type  | Usage | Sample collection event | Labels | Buckets | EthLambda | Grandine | Lantern  | Lighthouse | Nlean | Peam | Qlean    | Ream     | Zeam     |
@@ -48,7 +58,8 @@
 | `lean_gossip_signatures` | Gauge | Number of gossip signatures in fork-choice store | On gossip signatures update | | | ✅ | □ | 📝 | □ | ✅ | ✅ | ✅ | ✅ | □ |
 | `lean_latest_new_aggregated_payloads` | Gauge | Number of new aggregated payload items | On `latest_new_aggregated_payloads` update | | | ✅ | □ | 📝 | □ | ✅ | ✅ | □ | ✅ | □ |
 | `lean_latest_known_aggregated_payloads` | Gauge | Number of known aggregated payload items | On `latest_known_aggregated_payloads` update | | | ✅ | □ | 📝 | □ | ✅ | ✅ | □ | ✅ | □ |
-| `lean_committee_signatures_aggregation_time_seconds` | Histogram | Time taken to aggregate committee signatures | On committee signatures aggregation | | 0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 0.75, 1 | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | ✅ | □ |
+| `lean_committee_signatures_aggregation_time_seconds` | Histogram | Time taken to aggregate committee signatures | On committee signatures aggregation | | 0.05, 0.1, 0.25, 0.5, 0.75, 1, 2, 3, 4 | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | ✅ | □ |
+| `lean_node_sync_status` | Gauge | Node sync status | On node sync status change | status=idle,syncing,synced | | □ | □ | □ | □ | □ | □ | □ | □ | □ |
 
 ## State Transition Metrics
 
@@ -75,10 +86,13 @@
 
 ## Network Metrics
 
-| Name   | Type  | Usage | Sample collection event | Labels | EthLambda | Grandine | Lantern  | Lighthouse | Nlean | Peam | Qlean    | Ream     | Zeam     |
-|--------|-------|-------|-------------------------|--------|-----------|----------|----------|------------|-------|------|----------|----------|----------|
-| `lean_connected_peers` | Gauge | Number of connected peers | On scrape | client=ethlambda,grandine,lantern,lighthouse,qlean,ream,zeam | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | ✅ | 📝 |
-| `lean_peer_connection_events_total` | Counter | Total number of peer connection events | On peer connection | direction=inbound,outbound<br>result=success,timeout,error | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | 📝 | 📝 |
-| `lean_peer_disconnection_events_total` | Counter | Total number of peer disconnection events | On peer disconnection | direction=inbound,outbound<br>reason=timeout,remote_close,local_close,error | ✅ | □ | ✅ | □ | ✅ | ✅ | 📝 | 📝 | ✅ |
-| `lean_attestation_committee_subnet` | Gauge | Node's attestation committee subnet | On node start | | □ | □ | 📝 | □ | ✅ | ✅ | ✅ | □ | □ |
-| `lean_attestation_committee_count` | Gauge | Number of attestation committees (ATTESTATION_COMMITTEE_COUNT) | On node start | | ✅ | □ | 📝 | □ | ✅ | ✅ | ✅ | ✅ | □ |
+| Name   | Type  | Usage | Sample collection event | Labels | Buckets | EthLambda | Grandine | Lantern  | Lighthouse | Nlean | Peam | Qlean    | Ream     | Zeam     |
+|--------|-------|-------|-------------------------|--------|---------|-----------|----------|----------|------------|-------|------|----------|----------|----------|
+| `lean_connected_peers` | Gauge | Number of connected peers | On scrape | client=ethlambda,grandine,lantern,lighthouse,qlean,ream,zeam | | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | ✅ | 📝 |
+| `lean_peer_connection_events_total` | Counter | Total number of peer connection events | On peer connection | direction=inbound,outbound<br>result=success,timeout,error | | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | 📝 | 📝 |
+| `lean_peer_disconnection_events_total` | Counter | Total number of peer disconnection events | On peer disconnection | direction=inbound,outbound<br>reason=timeout,remote_close,local_close,error | | ✅ | □ | ✅ | □ | ✅ | ✅ | 📝 | 📝 | ✅ |
+| `lean_attestation_committee_subnet` | Gauge | Node's attestation committee subnet | On node start | | | □ | □ | 📝 | □ | ✅ | ✅ | ✅ | □ | □ |
+| `lean_attestation_committee_count` | Gauge | Number of attestation committees (ATTESTATION_COMMITTEE_COUNT) | On node start | | | ✅ | □ | 📝 | □ | ✅ | ✅ | ✅ | ✅ | □ |
+| `lean_gossip_block_size_bytes` | Histogram | Bytes size of a gossip block message | On gossip block received | | 10000, 50000, 100000, 250000, 500000, 1000000, 2000000, 5000000 | □ | □ | □ | □ | □ | □ | □ | □ | □ |
+| `lean_gossip_attestation_size_bytes` | Histogram | Bytes size of a gossip attestation message | On gossip attestation received | | 512, 1024, 2048, 4096, 8192, 16384 | □ | □ | □ | □ | □ | □ | □ | □ | □ |
+| `lean_gossip_aggregation_size_bytes` | Histogram | Bytes size of a gossip aggregated attestation message | On gossip aggregate_and_proof received | | 1024, 4096, 16384, 65536, 131072, 262144, 524288, 1048576 | □ | □ | □ | □ | □ | □ | □ | □ | □ |
