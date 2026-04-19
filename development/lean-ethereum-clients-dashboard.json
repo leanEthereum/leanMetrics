@@ -454,7 +454,7 @@
       "id": 89,
       "options": {
         "cellHeight": "sm",
-        "showHeader": false
+        "showHeader": true
       },
       "pluginVersion": "12.3.2",
       "targets": [
@@ -2383,7 +2383,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": " sum by (network, job, instance, client) (lean_connected_peers{network=~\"$network\", job=~\"$job\", instance=~\"$instance\", client!=\"\"})",
+          "expr": " sum by (job, client) (lean_connected_peers{job=~\"$job\", client!=\"\"})",
           "instant": false,
           "interval": "",
           "legendFormat": "{{job}} - {{client}}",
@@ -2666,7 +2666,7 @@
               }
             ]
           },
-          "unit": "bytes"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -2767,7 +2767,7 @@
               }
             ]
           },
-          "unit": "bytes"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -2868,7 +2868,7 @@
               }
             ]
           },
-          "unit": "bytes"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -3936,7 +3936,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "histogram_quantile(0.99, rate(lean_pq_sig_aggregated_signatures_building_time_seconds_bucket{network=~\"$network\", job=~\"$job\", instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "histogram_quantile(0.99, rate(lean_pq_sig_attestation_signatures_building_time_seconds_bucket{network=~\"$network\", job=~\"$job\", instance=~\"$instance\"}[$__rate_interval]))",
           "instant": false,
           "legendFormat": "{{job}}",
           "range": true,
@@ -5998,7 +5998,7 @@
           "refId": "A"
         }
       ],
-      "title": "Time taken to produce attestation",
+      "title": "Time taken to produce attestations",
       "type": "timeseries"
     },
     {
