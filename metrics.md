@@ -89,9 +89,10 @@
 
 | Name   | Type  | Usage | Sample collection event | Labels | Buckets | EthLambda | Grandine | Lantern  | Lighthouse | Nlean | Peam | Qlean    | Ream     | Zeam     |
 |--------|-------|-------|-------------------------|--------|---------|-----------|----------|----------|------------|-------|------|----------|----------|----------|
-| `lean_connected_peers` | Gauge | Number of connected peers | On scrape | client=ethlambda,grandine,lantern,lighthouse,qlean,ream,zeam | | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | ✅ | 📝 |
+| `lean_connected_peers` | Gauge | Number of connected peers | On scrape | client=\<name\>_\<N\>\|unknown (ex. zeam_0) | | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | ✅ | 📝 |
 | `lean_peer_connection_events_total` | Counter | Total number of peer connection events | On peer connection | direction=inbound,outbound<br>result=success,timeout,error | | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | 📝 | 📝 |
 | `lean_peer_disconnection_events_total` | Counter | Total number of peer disconnection events | On peer disconnection | direction=inbound,outbound<br>reason=timeout,remote_close,local_close,error | | ✅ | □ | ✅ | □ | ✅ | ✅ | 📝 | 📝 | ✅ |
+| `lean_gossip_mesh_peers` | Gauge | Number of peers in the gossipsub mesh | On scrape | client=\<name\>_\<N\>\|unknown (ex. zeam_0) | | □ | □ | □ | □ | □ | □ | □ | □ | □ |
 | `lean_attestation_committee_subnet` | Gauge | Node's attestation committee subnet | On node start | | | □ | □ | 📝 | □ | ✅ | ✅ | ✅ | □ | □ |
 | `lean_attestation_committee_count` | Gauge | Number of attestation committees (ATTESTATION_COMMITTEE_COUNT) | On node start | | | ✅ | □ | 📝 | □ | ✅ | ✅ | ✅ | ✅ | □ |
 | `lean_gossip_block_size_bytes` | Histogram | Bytes size of a gossip block message | On gossip block received | | 10000, 50000, 100000, 250000, 500000, 1000000, 2000000, 5000000 | □ | □ | □ | □ | □ | □ | □ | □ | □ |
