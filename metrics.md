@@ -60,6 +60,7 @@
 | `lean_latest_known_aggregated_payloads` | Gauge | Number of known aggregated payload items | On `latest_known_aggregated_payloads` update | | | ✅ | □ | 📝 | □ | ✅ | ✅ | □ | ✅ | □ |
 | `lean_committee_signatures_aggregation_time_seconds` | Histogram | Time taken to aggregate committee signatures | On committee signatures aggregation | | 0.05, 0.1, 0.25, 0.5, 0.75, 1, 2, 3, 4 | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | ✅ | □ |
 | `lean_node_sync_status` | Gauge | Node sync status | On node sync status change | status=idle,syncing,synced | | □ | □ | □ | □ | □ | □ | □ | □ | □ |
+| `lean_tick_interval_duration_seconds` | Histogram | Elapsed time between clock ticks in seconds | At the start of each tick interval | | 0.4, 0.6, 0.75, 0.8, 0.805, 0.81, 0.815, 0.82, 0.825, 0.85, 0.9, 1.0, 1.2, 1.6 | □ | □ | □ | □ | □ | □ | □ | □ | ✅ |
 
 ## State Transition Metrics
 
