@@ -29,7 +29,7 @@
 | `lean_pq_sig_aggregated_signatures_valid_total`| Counter | Total number of valid aggregated signatures | On aggregated signature verification | | | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `lean_pq_sig_aggregated_signatures_invalid_total`| Counter | Total number of invalid aggregated signatures | On aggregated signature verification | | | □ | □ | ✅ | □ | ✅ | ✅ | ✅ | □ | ✅ |
 | `lean_pq_sig_attestations_in_aggregated_signatures_total` | Counter | Total number of attestations included into aggregated signatures | On aggregated signature production | | | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `lean_pq_sig_aggregated_signatures_building_time_seconds` | Histogram | Time taken to build an aggregated attestation signature | On aggregated signature production | | 0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 4 | ✅ | □ | 📝 | □ | ✅ | ✅ | ✅ | ✅ | 📝 |
+| `lean_pq_sig_aggregated_signatures_building_time_seconds` | Histogram | Time taken to build an aggregated attestation signature | On aggregated signature production | | 0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 4 | ✅ | ✅ | 📝 | □ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `lean_pq_sig_aggregated_signatures_verification_time_seconds` | Histogram | Time taken to verify an aggregated attestation signature | On aggregated signature verification | | 0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 4 | ✅ | □ | 📝 | □ | ✅ | ✅ | ✅ | ✅ | 📝 |
 
 ## Block Production Metrics
@@ -85,6 +85,7 @@
 | `lean_validators_count` | Gauge | Number of validators managed by a node | On scrape |  | | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | `lean_is_aggregator` | Gauge | Validator's `is_aggregator` status. True=1, False=0 | On node start |  | | ✅ | □ | ✅ | □ | ✅ | ✅ | ✅ | ✅ | □ |
 | `lean_attestations_production_time_seconds` | Histogram | Time taken to produce attestation | On attestation production | | 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 0.75, 1 | □ | □ | □ | □ | □ | □ | □ | □ | □ |
+| `lean_aggregator_skipped_total` | Counter | Total number of aggregation submissions skipped, labeled by reason. Use to attribute missed aggregations: distinguish "had no duty this slot" (`not_aggregator`) from genuine misses (`not_synced` when wall-lag gates aggregation, `missing_state` when pre-state isn't resolvable, `spawn_failed` when the aggregation worker queue is full, `other` for anything not covered above). Sum across labels = total aggregation cycles seen. | On aggregation cycle exit | reason=not_aggregator,not_synced,missing_state,spawn_failed,other | | □ | □ | □ | □ | □ | □ | □ | □ | 📝 |
 
 ## Network Metrics
 
