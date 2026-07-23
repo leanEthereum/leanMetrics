@@ -4210,7 +4210,7 @@
         "spec": {
           "id": 62,
           "title": "Time taken to build an aggregated signature",
-          "description": "",
+          "description": "Wall time for lean_pq_sig_aggregated_signatures_building_time_seconds (PQ aggregate / XMSS prove path). Shows p50 / p95 / p99 per job.",
           "links": [],
           "data": {
             "kind": "QueryGroup",
@@ -4226,9 +4226,9 @@
                       "spec": {
                         "editorMode": "code",
                         "exemplar": false,
-                        "expr": "histogram_quantile(0.99, rate(lean_pq_sig_aggregated_signatures_building_time_seconds_bucket{network=~\"$network\", job=~\"$job\", instance=~\"$instance\"}[$__rate_interval]))",
+                        "expr": "histogram_quantile(0.5, sum by (le, job) (rate(lean_pq_sig_aggregated_signatures_building_time_seconds_bucket{network=~\"$network\", job=~\"$job\", instance=~\"$instance\"}[$__rate_interval])))",
                         "instant": false,
-                        "legendFormat": "{{job}}",
+                        "legendFormat": "{{job}} p50",
                         "range": true
                       },
                       "labels": {
@@ -4236,6 +4236,52 @@
                       }
                     },
                     "refId": "A",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "prometheus",
+                      "version": "v0",
+                      "spec": {
+                        "editorMode": "code",
+                        "exemplar": false,
+                        "expr": "histogram_quantile(0.95, sum by (le, job) (rate(lean_pq_sig_aggregated_signatures_building_time_seconds_bucket{network=~\"$network\", job=~\"$job\", instance=~\"$instance\"}[$__rate_interval])))",
+                        "instant": false,
+                        "legendFormat": "{{job}} p95",
+                        "range": true
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "prometheus",
+                      "version": "v0",
+                      "spec": {
+                        "editorMode": "code",
+                        "exemplar": false,
+                        "expr": "histogram_quantile(0.99, sum by (le, job) (rate(lean_pq_sig_aggregated_signatures_building_time_seconds_bucket{network=~\"$network\", job=~\"$job\", instance=~\"$instance\"}[$__rate_interval])))",
+                        "instant": false,
+                        "legendFormat": "{{job}} p99",
+                        "range": true
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
+                      }
+                    },
+                    "refId": "C",
                     "hidden": false
                   }
                 }
@@ -4251,8 +4297,11 @@
             "spec": {
               "options": {
                 "legend": {
-                  "calcs": [],
-                  "displayMode": "list",
+                  "calcs": [
+                    "mean",
+                    "lastNotNull"
+                  ],
+                  "displayMode": "table",
                   "placement": "bottom",
                   "showLegend": true
                 },
@@ -8253,6 +8302,173 @@
             }
           }
         }
+      },
+      "panel-110": {
+        "kind": "Panel",
+        "spec": {
+          "id": 110,
+          "title": "Aggregated signature building time (network-wide)",
+          "description": "Pooled histogram across all scraped instances for the selected network. Use this for a single p50/p95/p99 of lean_pq_sig_aggregated_signatures_building_time_seconds.",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "prometheus",
+                      "version": "v0",
+                      "spec": {
+                        "editorMode": "code",
+                        "exemplar": false,
+                        "expr": "histogram_quantile(0.5, sum by (le) (rate(lean_pq_sig_aggregated_signatures_building_time_seconds_bucket{network=~\"$network\"}[$__rate_interval])))",
+                        "instant": false,
+                        "legendFormat": "network p50",
+                        "range": true
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "prometheus",
+                      "version": "v0",
+                      "spec": {
+                        "editorMode": "code",
+                        "exemplar": false,
+                        "expr": "histogram_quantile(0.95, sum by (le) (rate(lean_pq_sig_aggregated_signatures_building_time_seconds_bucket{network=~\"$network\"}[$__rate_interval])))",
+                        "instant": false,
+                        "legendFormat": "network p95",
+                        "range": true
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
+                      }
+                    },
+                    "refId": "B",
+                    "hidden": false
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "prometheus",
+                      "version": "v0",
+                      "spec": {
+                        "editorMode": "code",
+                        "exemplar": false,
+                        "expr": "histogram_quantile(0.99, sum by (le) (rate(lean_pq_sig_aggregated_signatures_building_time_seconds_bucket{network=~\"$network\"}[$__rate_interval])))",
+                        "instant": false,
+                        "legendFormat": "network p99",
+                        "range": true
+                      },
+                      "labels": {
+                        "grafana.app/export-label": "prometheus-1"
+                      }
+                    },
+                    "refId": "C",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "timeseries",
+            "version": "12.3.2",
+            "spec": {
+              "options": {
+                "legend": {
+                  "calcs": [
+                    "mean",
+                    "lastNotNull"
+                  ],
+                  "displayMode": "table",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "unit": "s",
+                  "decimals": 1,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
       }
     },
     "layout": {
@@ -8888,6 +9104,19 @@
                       "spec": {
                         "x": 12,
                         "y": 32,
+                        "width": 12,
+                        "height": 8,
+                        "element": {
+                          "kind": "ElementReference",
+                          "name": "panel-110"
+                        }
+                      }
+                    },
+                    {
+                      "kind": "GridLayoutItem",
+                      "spec": {
+                        "x": 0,
+                        "y": 40,
                         "width": 12,
                         "height": 8,
                         "element": {
